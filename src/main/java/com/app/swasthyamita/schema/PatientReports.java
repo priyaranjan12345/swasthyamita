@@ -14,11 +14,14 @@ import javax.persistence.*;
 public class PatientReports {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long patientReportId;
+    @Column(name = "report_id")
+    private long id;
 
-    @Column(name = "file_name")
-    private String fileName;
+    @Column(name = "report_name")
+    private String reportFileName;
 
-    @Column(name = "file_path")
-    private String filePath;
+    @Column(name = "report_path")
+    private String reportFilePath;
+
+
 }

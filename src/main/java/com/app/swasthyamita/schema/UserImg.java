@@ -14,11 +14,14 @@ import javax.persistence.*;
 public class UserImg {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userImgId;
+    @Column(name = "img_id")
+    private long id;
 
-    @Column(name = "file_name")
-    private String fileName;
+    @Column(name = "img_name")
+    private String imgFileName;
 
-    @Column(name = "file_path")
-    private String filePath;
+    @Column(name = "img_path")
+    private String imgFilePath;
+
+
 }

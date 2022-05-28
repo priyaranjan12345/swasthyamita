@@ -11,18 +11,19 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "patient_prescription")
-public class IdProof {
+@Table(name = "user_doc")
+public class UserDoc {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idProofId;
+    @Column(name = "doc_id")
+    private long id;
 
-    @Column(name = "id_number")
+    @Column(name = "doc_number")
     private String idNumber;
 
-    @Column(name = "file_name")
+    @Column(name = "doc_name")
     private String fileName;
 
-    @Column(name = "file_path")
+    @Column(name = "doc_path")
     private String filePath;
 }

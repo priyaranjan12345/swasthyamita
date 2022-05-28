@@ -1,7 +1,9 @@
 package com.app.swasthyamita.repository.user;
 
-import com.app.swasthyamita.schema.IdProof;
+import com.app.swasthyamita.schema.UserDoc;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface IdProofRepository extends JpaRepository<IdProof, Long> {
+@Repository
+public interface IdProofRepository extends JpaRepository<UserDoc, Long> {
 }

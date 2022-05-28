@@ -3,8 +3,11 @@ package com.app.swasthyamita.schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -15,8 +18,8 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private long u_id;
+    @Column(name = "user_id")
+    private long id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -42,19 +45,31 @@ public class User {
     @Column(name = "is_verified", nullable = false)
     private boolean isVerified;
 
-    @OneToMany(targetEntity = PatientPrescription.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_fk", referencedColumnName = "u_id")
-    private List<PatientPrescription> userPrescriptions;
+    // many-to-many relationship
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_fk", referencedColumnName = "user_id")
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<PatientPrescription> patientPrescriptions = new ArrayList<>();
 
-    @OneToMany(targetEntity = PatientReports.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_fk", referencedColumnName = "u_id")
-    private List<PatientReports> userReports;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_fk", referencedColumnName = "user_id")
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<PatientReports> patientReports = new ArrayList<>();
 
-    @OneToOne(targetEntity = IdProof.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_fk", referencedColumnName = "u_id")
-    private IdProof idProof;
+    // one-to-one relationship
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "patient_details_fk", insertable = false, updatable = false)
+    private PatientDetails patientDetails;
 
-    @OneToOne(targetEntity = UserImg.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_fk", referencedColumnName = "u_id")
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "user_id_proof_fk", insertable = false, updatable = false)
+    private UserDoc userDoc;
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "user_img_fk", insertable = false, updatable = false)
     private UserImg userImg;
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "user_address_fk", insertable = false, updatable = false)
+    private UserAddress userAddress;
 }

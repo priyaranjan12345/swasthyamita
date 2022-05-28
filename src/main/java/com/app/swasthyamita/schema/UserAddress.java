@@ -15,7 +15,8 @@ import javax.persistence.*;
 public class UserAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long addressId;
+    @Column(name = "address_id")
+    private long id;
 
     @Column(name = "country_id", nullable = false)
     private int countryId;
@@ -34,4 +35,6 @@ public class UserAddress {
 
     @Column(name = "pin", nullable = false)
     private String pinCode;
+
+
 }

@@ -15,7 +15,8 @@ public class PatientDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long patientDetailsId;
+    @Column(name = "patient_details_id")
+    private long id;
 
     @Column(name = "blood_group")
     private String bloodGroupId;
@@ -23,13 +24,13 @@ public class PatientDetails {
     @Column(name = "body_weight")
     private String bodyWeight;
 
-    @Column(name = "alcoholic")
+    @Column(name = "is_alcoholic")
     private boolean isAlcoholic;
 
-    @Column(name = "smoking")
+    @Column(name = "is_smoking")
     private boolean isSmoking;
 
-    @Column(name = "tobacco")
+    @Column(name = "is_consuming_tobacco")
     private boolean isConsumingTobacco;
 
     @Column(name = "other_bad_habits")

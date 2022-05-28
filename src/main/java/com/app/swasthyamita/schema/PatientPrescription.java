@@ -15,11 +15,12 @@ import javax.persistence.*;
 public class PatientPrescription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long patientPrescriptionId;
+    @Column(name = "prescription_id")
+    private long id;
 
-    @Column(name = "file_name")
-    private String fileName;
+    @Column(name = "prescription_name")
+    private String prescriptionFileName;
 
-    @Column(name = "file_path")
-    private String filePath;
+    @Column(name = "prescription_path")
+    private String prescriptionFilePath;
 }
