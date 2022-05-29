@@ -1,8 +1,6 @@
 package com.app.swasthyamita.schema;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -46,20 +44,22 @@ public class User {
     private boolean isVerified;
 
     // many-to-many relationship
-    @OneToMany(cascade = CascadeType.ALL)
+    @ToString.Exclude
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_fk", referencedColumnName = "user_id")
     @Fetch(value = FetchMode.SUBSELECT)
     private List<PatientPrescription> patientPrescriptions = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ToString.Exclude
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_fk", referencedColumnName = "user_id")
     @Fetch(value = FetchMode.SUBSELECT)
     private List<PatientReports> patientReports = new ArrayList<>();
 
     // one-to-one relationship
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "patient_details_fk", insertable = false, updatable = false)
-    private PatientDetails patientDetails;
+//    @OneToOne(cascade = {CascadeType.ALL})
+//    @JoinColumn(name = "patient_details_fk", insertable = false, updatable = false)
+//    private PatientDetails patientDetails;
 
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_id_proof_fk", insertable = false, updatable = false)

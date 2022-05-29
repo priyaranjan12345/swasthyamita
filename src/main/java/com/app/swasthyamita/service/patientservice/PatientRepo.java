@@ -1,13 +1,11 @@
-package com.app.swasthyamita.repository.patient;
+package com.app.swasthyamita.service.patientservice;
 
 import com.app.swasthyamita.model.patientdto.PatientPrescriptionDto;
 import com.app.swasthyamita.model.patientdto.PatientRegDto;
 import com.app.swasthyamita.model.patientdto.PatientReportsDto;
+import com.app.swasthyamita.repository.patient.PatientDetailsRepository;
 import com.app.swasthyamita.repository.user.UserJpaRepo;
-import com.app.swasthyamita.schema.PatientPrescription;
-import com.app.swasthyamita.schema.PatientReports;
-import com.app.swasthyamita.schema.User;
-import com.app.swasthyamita.schema.UserImg;
+import com.app.swasthyamita.schema.*;
 import com.app.swasthyamita.service.SaveImage;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +16,7 @@ import java.util.List;
 public class PatientRepo implements IPetientRepo {
 
     UserJpaRepo userJpaRepo;
+    PatientDetailsRepository patientDetailsRepository;
 
     void PatientRepo(UserJpaRepo userJpaRepo) {
         this.userJpaRepo = userJpaRepo;
@@ -84,12 +83,19 @@ public class PatientRepo implements IPetientRepo {
         userImg.setImgFilePath(uploadDir);
         user.setUserImg(userImg);
 
+        // save user
+        User savedUser = userJpaRepo.save(user);
+
         // save patient details
-        user.setPatientDetails(patientRegDto.getPatientDetails());
+        if(savedUser != null) {
+            PatientDetails patientDetails = patientRegDto.getPatientDetails();
+            patientDetails.setUser(savedUser);
+            patientDetailsRepository.save(patientDetails);
+        }
 
         // save address
         user.setUserAddress(patientRegDto.getUserAddress());
 
-        return userJpaRepo.save(user);
+        return savedUser;
     }
 }

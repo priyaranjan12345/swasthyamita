@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserIdProofDto {
+public class UserDocDto {
     private String fileName;
     private MultipartFile idProofFile;
 }

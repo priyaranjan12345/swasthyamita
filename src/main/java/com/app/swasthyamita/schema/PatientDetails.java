@@ -3,8 +3,11 @@ package com.app.swasthyamita.schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.security.PrivateKey;
 
 @Data
 @AllArgsConstructor
@@ -35,4 +38,9 @@ public class PatientDetails {
 
     @Column(name = "other_bad_habits")
     private String otherBadHabits;
+
+    @OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "uid", referencedColumnName = "user_id")
+    @NotFound(action = NotFoundAction.IGNORE)
+    private User user;
 }
