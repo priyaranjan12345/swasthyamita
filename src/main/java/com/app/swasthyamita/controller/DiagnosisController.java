@@ -1,4 +1,4 @@
-package com.app.swasthyamita.controller.dignosis;
+package com.app.swasthyamita.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

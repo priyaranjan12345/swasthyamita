@@ -1,4 +1,4 @@
-package com.app.swasthyamita.schema;
+package com.app.swasthyamita.schema.user;
 
 
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class UserDoc {
     private String idNumber;
 
     @Column(name = "doc_name")
-    private String fileName;
+    private String documentName;
 
     @Column(name = "doc_path")
     private String filePath;

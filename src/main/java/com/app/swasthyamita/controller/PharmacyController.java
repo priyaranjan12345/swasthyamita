@@ -1,9 +1,10 @@
-package com.app.swasthyamita.controller.doctor;
+package com.app.swasthyamita.controller;
+
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/doctor")
-public class DoctorController {
+@RequestMapping("/pharmacy")
+public class PharmacyController {
 }

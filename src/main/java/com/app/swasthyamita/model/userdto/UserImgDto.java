@@ -1,15 +1,15 @@
-package com.app.swasthyamita.model.patientdto;
-
+package com.app.swasthyamita.model.userdto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PatientReportsDto {
-    private String reportName;
-    private MultipartFile file;
+public class UserImgDto {
+    private String fileName;
+    private MultipartFile imgFile;
 }

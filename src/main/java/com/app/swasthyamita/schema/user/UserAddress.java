@@ -1,4 +1,4 @@
-package com.app.swasthyamita.schema;
+package com.app.swasthyamita.schema.user;
 
 
 import lombok.AllArgsConstructor;

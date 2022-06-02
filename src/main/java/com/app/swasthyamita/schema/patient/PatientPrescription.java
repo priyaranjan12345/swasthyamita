@@ -1,4 +1,4 @@
-package com.app.swasthyamita.schema;
+package com.app.swasthyamita.schema.patient;
 
 
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ public class PatientPrescription {
     private long id;
 
     @Column(name = "prescription_name")
-    private String prescriptionFileName;
+    private String prescriptionName;
 
     @Column(name = "prescription_path")
     private String prescriptionFilePath;

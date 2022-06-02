@@ -10,6 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PatientPrescriptionDto {
-    private String fileName;
+    private String prescriptionName;
     private MultipartFile file;
 }

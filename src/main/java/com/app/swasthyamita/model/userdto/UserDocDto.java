@@ -1,4 +1,4 @@
-package com.app.swasthyamita.model;
+package com.app.swasthyamita.model.userdto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDocDto {
-    private String fileName;
+    private String documentName;
     private MultipartFile idProofFile;
 }

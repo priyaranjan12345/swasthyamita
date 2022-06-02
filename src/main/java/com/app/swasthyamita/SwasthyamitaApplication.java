@@ -10,4 +10,12 @@ public class SwasthyamitaApplication {
         SpringApplication.run(SwasthyamitaApplication.class, args);
     }
 
+//    @Bean
+//    public Docket swaggerConfiguration() {
+//        return new Docket(DocumentationType.SWAGGER_2).select()
+//                .paths(PathSelectors.ant("/swasthyamita"))
+//                .apis(RequestHandlerSelectors.basePackage("com.app.swasthyamita"))
+//                .build();
+//    }
+
 }
